@@ -7,17 +7,17 @@ enum ProductionStatus {
     DELAYED = 'DELAYED',
 }
 registerEnumType(ProductionStatus, {
-    name: 'Production status',
+    name: 'ProductionStatus',
     description: 'The basic production status',
 });
 
 @ObjectType({ description: 'The productions model' })
 export class Productions {
     @Field((_type) => String)
-    production_ID!: string;
+    production_id!: string;
 
     @Field((_type) => String)
-    weapon_model_ID!: string;
+    weapon_model_id!: string;
 
     @Field((_type) => Date)
     production_start_date!: Date;

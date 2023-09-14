@@ -9,7 +9,7 @@ enum OrderStatus {
 }
 
 registerEnumType(OrderStatus, {
-    name: 'Order status',
+    name: 'OrderStatus',
     description: 'The basic order status',
 });
 

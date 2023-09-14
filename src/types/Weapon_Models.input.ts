@@ -32,28 +32,29 @@ enum WeaponType {
 }
 
 registerEnumType(WeaponType, {
-    name: 'WeaponType',
+    name: 'WeaponInputType',
     description: 'Different types of firearms and weapons.',
 });
+
 @InputType()
 export class Weapon_ModelsInput implements Partial<Weapon_Models> {
-    @Field()
+    @Field((_type) => String)
     @IsUUID()
     model_id!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     model_name!: string;
 
-    @Field()
+    @Field((_type) => WeaponType)
     @IsEnum(WeaponType)
     weapon_type!: WeaponType;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     manufacturer!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     model_description!: string;
 }

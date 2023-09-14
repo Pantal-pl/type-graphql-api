@@ -9,30 +9,31 @@ enum ProductionStatus {
     COMPLETED = 'COMPLETED',
     DELAYED = 'DELAYED',
 }
+
 registerEnumType(ProductionStatus, {
-    name: 'Production status',
+    name: 'ProductionInputStatus',
     description: 'The basic production status',
 });
 
 @InputType({ description: 'The productions model' })
 export class ProductionsInput implements Partial<Productions> {
-    @Field()
+    @Field((_type) => String)
     @IsUUID()
-    production_ID!: string;
+    production_id!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsUUID()
-    weapon_model_ID!: string;
+    weapon_model_id!: string;
 
-    @Field()
+    @Field((_type) => Date)
     @IsDate()
     production_start_date!: Date;
 
-    @Field()
+    @Field((_type) => Date)
     @IsDate()
     estimated_completion_date!: Date;
 
-    @Field()
+    @Field((_type) => ProductionStatus)
     @IsEnum(ProductionStatus)
     production_status!: ProductionStatus;
 }

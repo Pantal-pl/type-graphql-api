@@ -9,42 +9,42 @@ import {
     MinLength,
     MaxLength,
 } from 'class-validator';
-import { Field, InputType } from 'type-graphql';
+import { Field, Float, InputType } from 'type-graphql';
 import { Employess } from 'index';
 
 @InputType()
 export class EmployeesInput implements Partial<Employess> {
-    @Field()
+    @Field((_type) => String)
     @IsUUID()
     employee_id!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     @MinLength(2)
     @MaxLength(25)
     employee_first_name!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     @MinLength(2)
     @MaxLength(25)
     employee_second_name!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsString()
     position!: string;
 
-    @Field()
+    @Field((_type) => String)
     @IsDate()
     employment_date!: Date;
 
-    @Field()
+    @Field((_type) => Float)
     @IsNumber({ maxDecimalPlaces: 2 })
     @IsCurrency({ allow_decimal: true, symbol: '$' })
     @IsPositive({ always: true })
     salary!: number;
 
-    @Field()
+    @Field((_type) => String)
     @IsEmail()
     employee_contact!: string;
 }
