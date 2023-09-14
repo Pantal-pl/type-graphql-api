@@ -1,0 +1,4 @@
+node_modules
+.env
+src/schema.graphql
+package-lock.json
