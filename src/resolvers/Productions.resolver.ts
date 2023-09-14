@@ -1,13 +1,27 @@
 import { Resolver, Query, Mutation, Args, Arg } from 'type-graphql';
-
+import { Productions, ProductionsInput } from 'index';
 @Resolver()
 export class ProductionsResolver {
-    @Query(() => String)
-    async get(@Arg('v', () => String) v: any): Promise<any> {}
+    @Query(() => Productions)
+    async getProduction(@Arg('production_id', () => ProductionsInput) production_id: string): Promise<Productions> {
+        return new Productions();
+    }
 
-    @Mutation(() => String)
-    async add(@Arg('v1', () => String) v1: any): Promise<any> {}
+    @Mutation(() => Productions)
+    async addProduction(@Arg('input', () => ProductionsInput) input: Productions): Promise<Productions> {
+        return new Productions();
+    }
 
-    @Mutation(() => String)
-    async delete(@Arg('v2', () => String) v2: any): Promise<any> {}
+    @Mutation(() => Productions)
+    async updateProduction(
+        @Arg('production_id', () => ProductionsInput) production_id: string,
+        @Arg('input', () => ProductionsInput) input: ProductionsInput
+    ): Promise<Productions> {
+        return new Productions();
+    }
+
+    @Mutation(() => Boolean)
+    async deleteProduction(@Arg('production_id', () => ProductionsInput) production_id: String): Promise<Boolean> {
+        return true;
+    }
 }
