@@ -7,19 +7,19 @@
 The components model
 """
 type Components {
-    component_description: String!
-    component_id: String!
-    component_name: String!
-    in_stock: Int!
-    unit_price: Float!
+  component_description: String!
+  component_id: String!
+  component_name: String!
+  in_stock: Int!
+  unit_price: Float!
 }
 
 input ComponentsInput {
-    component_description: String
-    component_id: String!
-    component_name: String!
-    in_stock: Int!
-    unit_price: Float!
+  component_description: String
+  component_id: String!
+  component_name: String!
+  in_stock: Int!
+  unit_price: Float!
 }
 
 """
@@ -28,236 +28,236 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTimeISO
 
 input EmployeesInput {
-    employee_contact: String!
-    employee_first_name: String!
-    employee_id: String!
-    employee_second_name: String!
-    employment_date: String!
-    position: String!
-    salary: Float!
+  employee_contact: String!
+  employee_first_name: String!
+  employee_id: String!
+  employee_second_name: String!
+  employment_date: String!
+  position: String!
+  salary: Float!
 }
 
 """
 The employees model
 """
-type Employess {
-    employee_contact: String!
-    employee_first_name: String!
-    employee_id: String!
-    employee_second_name: String!
-    employment_date: DateTimeISO!
-    position: String!
-    salary: Float!
+type Employees {
+  employee_contact: String!
+  employee_first_name: String!
+  employee_id: String!
+  employee_second_name: String!
+  employment_date: DateTimeISO!
+  position: String!
+  salary: Float!
 }
 
 type Model_Components {
-    component_ID: String!
-    entry_id: String!
-    quantity_needed_for_model: Int!
-    weapon_model_id: String!
+  component_ID: String!
+  entry_id: String!
+  quantity_needed_for_model: Int!
+  weapon_model_id: String!
 }
 
 input Model_ComponentsInput {
-    component_ID: String!
-    entry_id: String!
-    quantity_needed_for_model: Int!
-    weapon_model_id: String!
+  component_ID: String!
+  entry_id: String!
+  quantity_needed_for_model: Int!
+  weapon_model_id: String!
 }
 
 type Mutation {
-    addComponent(input: ComponentsInput!): Components!
-    addEmployee(input: EmployeesInput!): Employess!
-    addModelComponent(input: Model_ComponentsInput!): Model_Components!
-    addOrder(input: OrdersInput!): Orders!
-    addProduction(input: ProductionsInput!): Productions!
-    addWeaponModel(input: Weapon_ModelsInput!): Weapon_Models!
-    deleteComponent(component_id: ComponentsInput!): Boolean!
-    deleteEmployee(employee_id: EmployeesInput!): Boolean!
-    deleteModelComponent(entry_id: Model_ComponentsInput!): Boolean!
-    deleteOrder(order_id: OrdersInput!): Boolean!
-    deleteProduction(production_id: ProductionsInput!): Boolean!
-    deleteWeaponModel(model_id: Weapon_ModelsInput!): Boolean!
-    updateComponent(component_id: ComponentsInput!, input: ComponentsInput!): Components!
-    updateEmployee(employee_id: EmployeesInput!, input: EmployeesInput!): Employess!
-    updateModelComponent(entry_id: Model_ComponentsInput!, input: Model_ComponentsInput!): Model_Components!
-    updateOrder(input: OrdersInput!, order_id: OrdersInput!): Orders!
-    updateProduction(input: ProductionsInput!, production_id: ProductionsInput!): Productions!
-    updateWeaponModel(input: Weapon_ModelsInput!, model_id: Weapon_ModelsInput!): Weapon_Models!
+  addComponent(input: ComponentsInput!): Components!
+  addEmployee(input: EmployeesInput!): Employees!
+  addModelComponent(input: Model_ComponentsInput!): Model_Components!
+  addOrder(input: OrdersInput!): Orders!
+  addProduction(input: ProductionsInput!): Productions!
+  addWeaponModel(input: Weapon_ModelsInput!): Weapon_Models!
+  deleteComponent(component_id: ComponentsInput!): Boolean!
+  deleteEmployee(employee_id: EmployeesInput!): Boolean!
+  deleteModelComponent(entry_id: Model_ComponentsInput!): Boolean!
+  deleteOrder(order_id: OrdersInput!): Boolean!
+  deleteProduction(production_id: ProductionsInput!): Boolean!
+  deleteWeaponModel(model_id: Weapon_ModelsInput!): Boolean!
+  updateComponent(component_id: ComponentsInput!, input: ComponentsInput!): Components!
+  updateEmployee(employee_id: EmployeesInput!, input: EmployeesInput!): Employees!
+  updateModelComponent(entry_id: Model_ComponentsInput!, input: Model_ComponentsInput!): Model_Components!
+  updateOrder(input: OrdersInput!, order_id: OrdersInput!): Orders!
+  updateProduction(input: ProductionsInput!, production_id: ProductionsInput!): Productions!
+  updateWeaponModel(input: Weapon_ModelsInput!, model_id: Weapon_ModelsInput!): Weapon_Models!
 }
 
 """
 The basic order status
 """
 enum OrderInputStatus {
-    CANCELED
-    DELIVERED
-    IN_PROGRESS
-    PENDING
-    SHIPPED
+  CANCELED
+  DELIVERED
+  IN_PROGRESS
+  PENDING
+  SHIPPED
 }
 
 """
 The basic order status
 """
 enum OrderStatus {
-    CANCELED
-    DELIVERED
-    IN_PROGRESS
-    PENDING
-    SHIPPED
+  CANCELED
+  DELIVERED
+  IN_PROGRESS
+  PENDING
+  SHIPPED
 }
 
 """
 The orders model
 """
 type Orders {
-    expected_delivery_date: DateTimeISO!
-    order_date: DateTimeISO!
-    order_id: String!
-    order_status: OrderStatus!
-    total_order_cost: Float!
-    weapon_model_id: String!
+  expected_delivery_date: DateTimeISO!
+  order_date: DateTimeISO!
+  order_id: String!
+  order_status: OrderStatus!
+  total_order_cost: Float!
+  weapon_model_id: String!
 }
 
 input OrdersInput {
-    expected_delivery_date: DateTimeISO!
-    order_date: DateTimeISO!
-    order_id: String!
-    order_status: OrderInputStatus!
-    total_order_cost: Float!
-    weapon_model_id: String!
+  expected_delivery_date: DateTimeISO!
+  order_date: DateTimeISO!
+  order_id: String!
+  order_status: OrderInputStatus!
+  total_order_cost: Float!
+  weapon_model_id: String!
 }
 
 """
 The basic production status
 """
 enum ProductionInputStatus {
-    COMPLETED
-    DELAYED
-    IN_PROGRESS
-    PLANNED
+  COMPLETED
+  DELAYED
+  IN_PROGRESS
+  PLANNED
 }
 
 """
 The basic production status
 """
 enum ProductionStatus {
-    COMPLETED
-    DELAYED
-    IN_PROGRESS
-    PLANNED
+  COMPLETED
+  DELAYED
+  IN_PROGRESS
+  PLANNED
 }
 
 """
 The productions model
 """
 type Productions {
-    estimated_completion_date: DateTimeISO!
-    production_id: String!
-    production_start_date: DateTimeISO!
-    production_status: ProductionStatus!
-    weapon_model_id: String!
+  estimated_completion_date: DateTimeISO!
+  production_id: String!
+  production_start_date: DateTimeISO!
+  production_status: ProductionStatus!
+  weapon_model_id: String!
 }
 
 """
 The productions model
 """
 input ProductionsInput {
-    estimated_completion_date: DateTimeISO!
-    production_id: String!
-    production_start_date: DateTimeISO!
-    production_status: ProductionInputStatus!
-    weapon_model_id: String!
+  estimated_completion_date: DateTimeISO!
+  production_id: String!
+  production_start_date: DateTimeISO!
+  production_status: ProductionInputStatus!
+  weapon_model_id: String!
 }
 
 type Query {
-    getComponent(component_id: ComponentsInput!): Components!
-    getEmployee(employee_id: EmployeesInput!): Employess!
-    getModelComponent(entry_id: Model_ComponentsInput!): Model_Components!
-    getOrder(order_id: OrdersInput!): Orders!
-    getProduction(production_id: ProductionsInput!): Productions!
-    getWeaponModel(model_id: Weapon_ModelsInput!): Weapon_Models!
+  getComponent(component_id: ComponentsInput!): Components!
+  getEmployee(employee_id: EmployeesInput!): Employees!
+  getModelComponent(entry_id: Model_ComponentsInput!): Model_Components!
+  getOrder(order_id: OrdersInput!): Orders!
+  getProduction(production_id: ProductionsInput!): Productions!
+  getWeaponModel(model_id: Weapon_ModelsInput!): Weapon_Models!
 }
 
 """
 Different types of firearms and weapons.
 """
 enum WeaponInputType {
-    ASSAULT_RIFLE
-    BAZOOKA
-    BRASS_KNUCKLES
-    CARBINE
-    CROSSBOW
-    DERRINGER
-    FLAMETHROWER
-    GATLING_GUN
-    GRENADE
-    GRENADE_LAUNCHER
-    LIGHT_MACHINE_GUN
-    MACHINE_GUN
-    MINI_UZI
-    MUSKET
-    PISTOL
-    REVOLVER
-    RIFLE
-    RPG
-    SAWED_OFF_SHOTGUN
-    SHARPSHOOTER_RIFLE
-    SHOTGUN
-    SNIPER_RIFLE
-    SUBMACHINE_GUN
-    TASER
-    TOMMY_GUN
-    ZIP_GUN
+  ASSAULT_RIFLE
+  BAZOOKA
+  BRASS_KNUCKLES
+  CARBINE
+  CROSSBOW
+  DERRINGER
+  FLAMETHROWER
+  GATLING_GUN
+  GRENADE
+  GRENADE_LAUNCHER
+  LIGHT_MACHINE_GUN
+  MACHINE_GUN
+  MINI_UZI
+  MUSKET
+  PISTOL
+  REVOLVER
+  RIFLE
+  RPG
+  SAWED_OFF_SHOTGUN
+  SHARPSHOOTER_RIFLE
+  SHOTGUN
+  SNIPER_RIFLE
+  SUBMACHINE_GUN
+  TASER
+  TOMMY_GUN
+  ZIP_GUN
 }
 
 """
 Different types of firearms and weapons.
 """
 enum WeaponType {
-    ASSAULT_RIFLE
-    BAZOOKA
-    BRASS_KNUCKLES
-    CARBINE
-    CROSSBOW
-    DERRINGER
-    FLAMETHROWER
-    GATLING_GUN
-    GRENADE
-    GRENADE_LAUNCHER
-    LIGHT_MACHINE_GUN
-    MACHINE_GUN
-    MINI_UZI
-    MUSKET
-    PISTOL
-    REVOLVER
-    RIFLE
-    RPG
-    SAWED_OFF_SHOTGUN
-    SHARPSHOOTER_RIFLE
-    SHOTGUN
-    SNIPER_RIFLE
-    SUBMACHINE_GUN
-    TASER
-    TOMMY_GUN
-    ZIP_GUN
+  ASSAULT_RIFLE
+  BAZOOKA
+  BRASS_KNUCKLES
+  CARBINE
+  CROSSBOW
+  DERRINGER
+  FLAMETHROWER
+  GATLING_GUN
+  GRENADE
+  GRENADE_LAUNCHER
+  LIGHT_MACHINE_GUN
+  MACHINE_GUN
+  MINI_UZI
+  MUSKET
+  PISTOL
+  REVOLVER
+  RIFLE
+  RPG
+  SAWED_OFF_SHOTGUN
+  SHARPSHOOTER_RIFLE
+  SHOTGUN
+  SNIPER_RIFLE
+  SUBMACHINE_GUN
+  TASER
+  TOMMY_GUN
+  ZIP_GUN
 }
 
 """
 The weapon model
 """
 type Weapon_Models {
-    manufacturer: String!
-    model_description: String!
-    model_id: String!
-    model_name: String!
-    weapon_type: WeaponType!
+  manufacturer: String!
+  model_description: String!
+  model_id: String!
+  model_name: String!
+  weapon_type: WeaponType!
 }
 
 input Weapon_ModelsInput {
-    manufacturer: String!
-    model_description: String!
-    model_id: String!
-    model_name: String!
-    weapon_type: WeaponInputType!
+  manufacturer: String!
+  model_description: String!
+  model_id: String!
+  model_name: String!
+  weapon_type: WeaponInputType!
 }

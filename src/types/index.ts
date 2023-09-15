@@ -1,6 +1,6 @@
 export { Components } from './Components.type';
 export { ComponentsInput } from './Components.input';
-export { Employess } from './Employees.type';
+export { Employees } from './Employees.type';
 export { EmployeesInput } from './Employees.input';
 export { Model_Components } from './Model_Components.type';
 export { Model_ComponentsInput } from './Model_Components.input';
