@@ -1,5 +1,4 @@
-\c
-weapon_database;
+\c weapon_database;
 
 CREATE TABLE users
 (

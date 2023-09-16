@@ -11,12 +11,16 @@ import {
   OrdersResolver,
   ProductionsResolver,
   Weapon_ModelsResolver,
+  dataSource,
 } from 'index';
 
 async function bootstrap() {
   const filename = fileURLToPath(import.meta.url);
 
   const dirname = path.dirname(filename);
+
+  await dataSource.initialize();
+
   const schema = await buildSchema({
     resolvers: [ComponentResolver, EmployeesResolver, OrdersResolver, Model_ComponentsResolver, ProductionsResolver, Weapon_ModelsResolver],
     emitSchemaFile: path.resolve(dirname, 'schema.graphql'),
@@ -35,3 +39,4 @@ bootstrap().catch(console.error);
 
 export * from 'types';
 export * from 'resolvers';
+export * from 'data';
