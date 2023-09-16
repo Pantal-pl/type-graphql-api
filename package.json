@@ -6,6 +6,7 @@
     "graphql": "^16.8.0",
     "graphql-scalars": "^1.22.2",
     "inquirer": "^9.2.11",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "tsx": "^3.12.10",
     "type-graphql": "^2.0.0-beta.3",
