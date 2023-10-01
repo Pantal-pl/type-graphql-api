@@ -5,7 +5,7 @@
 - [x] Setup TS and TypeGraphql together
 - [x] Implement eslint checking
 - [ ] Add relations with TypeORM
-- [ ] Configure the database with Knex.js
+- [x] Configure database connection with type-orm dataSource
 - [ ] Create all tables in a Docker init SQL file
 - [ ] Fill all Resolvers with business logic
 - [ ] Create jest config and wire up everything
