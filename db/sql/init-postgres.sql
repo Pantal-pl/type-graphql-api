@@ -27,7 +27,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    Employee (
+    Employees (
         employee_id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
         employee_first_name VARCHAR(255) NOT NULL,
         employee_second_name VARCHAR(255),
@@ -45,7 +45,7 @@ CREATE TABLE
         production_status VARCHAR(255),
         responsible_employee_id UUID,
         FOREIGN KEY (weapon_weapon_model_id) REFERENCES WeaponModel (weapon_model_id),
-        FOREIGN KEY (responsible_employee_id) REFERENCES Employee (employee_id)
+        FOREIGN KEY (responsible_employee_id) REFERENCES Employees (employee_id)
     );
 
 CREATE TABLE
