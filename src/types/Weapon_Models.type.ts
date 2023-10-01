@@ -1,4 +1,6 @@
+import 'reflect-metadata';
 import { ObjectType, Field, registerEnumType } from 'type-graphql';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 enum WeaponType {
   RIFLE = 'Rifle',
@@ -34,20 +36,26 @@ registerEnumType(WeaponType, {
   description: 'Different types of firearms and weapons.',
 });
 
+@Entity()
 @ObjectType({ description: 'The weapon model' })
 export class Weapon_Models {
+  @PrimaryColumn('uuid')
   @Field((_type) => String)
   model_id!: string;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   model_name!: string;
 
+  @Column({ type: 'enum', enum: WeaponType })
   @Field((_type) => WeaponType)
   weapon_type!: WeaponType;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   manufacturer!: string;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   model_description!: string;
 }

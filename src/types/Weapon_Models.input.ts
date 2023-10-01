@@ -1,5 +1,7 @@
+import 'reflect-metadata';
 import { Field, InputType, registerEnumType } from 'type-graphql';
 import { IsEnum, IsString, IsUUID } from 'class-validator';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { Weapon_Models } from 'index';
 
 enum WeaponType {
@@ -36,24 +38,30 @@ registerEnumType(WeaponType, {
   description: 'Different types of firearms and weapons.',
 });
 
+@Entity()
 @InputType()
 export class Weapon_ModelsInput implements Partial<Weapon_Models> {
+  @PrimaryColumn('uuid')
   @Field((_type) => String)
   @IsUUID()
   model_id!: string;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   @IsString()
   model_name!: string;
 
+  @Column({ type: 'enum', enum: WeaponType })
   @Field((_type) => WeaponType)
   @IsEnum(WeaponType)
   weapon_type!: WeaponType;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   @IsString()
   manufacturer!: string;
 
+  @Column({ type: 'varchar' })
   @Field((_type) => String)
   @IsString()
   model_description!: string;
