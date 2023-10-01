@@ -145,7 +145,7 @@ input ProductionsInput {
 
 type Query {
   getComponent(component_id: String!): Components!
-  getEmployee(employee_id: String!): Employees!
+  getEmployee(employee_id: String!): Employees
   getModelComponent(entry_id: String!): Model_Components!
   getOrder(order_id: String!): Orders!
   getProduction(production_id: String!): Productions!
