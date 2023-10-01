@@ -1,12 +1,12 @@
-import { IsCurrency, IsDate, IsEmail, IsNumber, IsPositive, IsString, IsUUID, MinLength, MaxLength } from 'class-validator';
+import { IsCurrency, IsEmail, IsNumber, IsPositive, IsString, IsUUID, MinLength, MaxLength, IsDateString } from 'class-validator';
 import { Field, Float, InputType } from 'type-graphql';
 import { Employees } from 'index';
 
 @InputType()
 export class EmployeesInput implements Partial<Employees> {
-  @Field((_type) => String)
+  @Field((_type) => String, { nullable: true })
   @IsUUID()
-  employee_id!: string;
+  employee_id: string | undefined;
 
   @Field((_type) => String)
   @IsString()
@@ -25,12 +25,10 @@ export class EmployeesInput implements Partial<Employees> {
   position!: string;
 
   @Field((_type) => String)
-  @IsDate()
-  employment_date!: Date;
+  employment_date!: string;
 
   @Field((_type) => Float)
   @IsNumber({ maxDecimalPlaces: 2 })
-  @IsCurrency({ allow_decimal: true, symbol: '$' })
   @IsPositive({ always: true })
   salary!: number;
 

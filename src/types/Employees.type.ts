@@ -1,4 +1,5 @@
 import { ObjectType, Field, Float } from 'type-graphql';
+import { Entity } from 'typeorm';
 
 @ObjectType({ description: 'The employees model' })
 export class Employees {
@@ -14,8 +15,8 @@ export class Employees {
   @Field((_type) => String)
   position!: string;
 
-  @Field((_type) => Date)
-  employment_date!: Date;
+  @Field((_type) => String)
+  employment_date!: string;
 
   @Field((_type) => Float)
   salary!: number;
