@@ -3,9 +3,7 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-"""
-The components model
-"""
+"""The components model"""
 type Components {
   component_description: String!
   component_id: String!
@@ -27,7 +25,8 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTimeISO
 
-input EmployeesInput {
+"""The employees model"""
+type Employees {
   employee_contact: String!
   employee_first_name: String!
   employee_id: String!
@@ -37,15 +36,12 @@ input EmployeesInput {
   salary: Float!
 }
 
-"""
-The employees model
-"""
-type Employees {
+input EmployeesInput {
   employee_contact: String!
   employee_first_name: String!
-  employee_id: String!
+  employee_id: String
   employee_second_name: String!
-  employment_date: DateTimeISO!
+  employment_date: String!
   position: String!
   salary: Float!
 }
@@ -72,33 +68,20 @@ type Mutation {
   addProduction(input: ProductionsInput!): Productions!
   addWeaponModel(input: Weapon_ModelsInput!): Weapon_Models!
   deleteComponent(component_id: ComponentsInput!): Boolean!
-  deleteEmployee(employee_id: EmployeesInput!): Boolean!
-  deleteModelComponent(entry_id: Model_ComponentsInput!): Boolean!
-  deleteOrder(order_id: OrdersInput!): Boolean!
-  deleteProduction(production_id: ProductionsInput!): Boolean!
-  deleteWeaponModel(model_id: Weapon_ModelsInput!): Boolean!
-  updateComponent(component_id: ComponentsInput!, input: ComponentsInput!): Components!
-  updateEmployee(employee_id: EmployeesInput!, input: EmployeesInput!): Employees!
-  updateModelComponent(entry_id: Model_ComponentsInput!, input: Model_ComponentsInput!): Model_Components!
-  updateOrder(input: OrdersInput!, order_id: OrdersInput!): Orders!
-  updateProduction(input: ProductionsInput!, production_id: ProductionsInput!): Productions!
-  updateWeaponModel(input: Weapon_ModelsInput!, model_id: Weapon_ModelsInput!): Weapon_Models!
+  deleteEmployee(employee_id: String!): Boolean!
+  deleteModelComponent(entry_id: String!): Boolean!
+  deleteOrder(order_id: String!): Boolean!
+  deleteProduction(production_id: String!): Boolean!
+  deleteWeaponModel(model_id: String!): Boolean!
+  updateComponent(component_id: String!, input: ComponentsInput!): Components!
+  updateEmployee(employee_id: String!, input: EmployeesInput!): Employees!
+  updateModelComponent(entry_id: String!, input: Model_ComponentsInput!): Model_Components!
+  updateOrder(input: OrdersInput!, order_id: String!): Orders!
+  updateProduction(input: ProductionsInput!, production_id: String!): Productions!
+  updateWeaponModel(input: Weapon_ModelsInput!, model_id: String!): Weapon_Models!
 }
 
-"""
-The basic order status
-"""
-enum OrderInputStatus {
-  CANCELED
-  DELIVERED
-  IN_PROGRESS
-  PENDING
-  SHIPPED
-}
-
-"""
-The basic order status
-"""
+"""The basic order status"""
 enum OrderStatus {
   CANCELED
   DELIVERED
@@ -107,9 +90,7 @@ enum OrderStatus {
   SHIPPED
 }
 
-"""
-The orders model
-"""
+"""The orders model"""
 type Orders {
   expected_delivery_date: DateTimeISO!
   order_date: DateTimeISO!
@@ -123,14 +104,12 @@ input OrdersInput {
   expected_delivery_date: DateTimeISO!
   order_date: DateTimeISO!
   order_id: String!
-  order_status: OrderInputStatus!
+  order_status: OrderStatus!
   total_order_cost: Float!
   weapon_model_id: String!
 }
 
-"""
-The basic production status
-"""
+"""The basic production status"""
 enum ProductionInputStatus {
   COMPLETED
   DELAYED
@@ -138,9 +117,7 @@ enum ProductionInputStatus {
   PLANNED
 }
 
-"""
-The basic production status
-"""
+"""The basic production status"""
 enum ProductionStatus {
   COMPLETED
   DELAYED
@@ -148,9 +125,7 @@ enum ProductionStatus {
   PLANNED
 }
 
-"""
-The productions model
-"""
+"""The productions model"""
 type Productions {
   estimated_completion_date: DateTimeISO!
   production_id: String!
@@ -159,9 +134,7 @@ type Productions {
   weapon_model_id: String!
 }
 
-"""
-The productions model
-"""
+"""The productions model"""
 input ProductionsInput {
   estimated_completion_date: DateTimeISO!
   production_id: String!
@@ -171,17 +144,15 @@ input ProductionsInput {
 }
 
 type Query {
-  getComponent(component_id: ComponentsInput!): Components!
-  getEmployee(employee_id: EmployeesInput!): Employees!
-  getModelComponent(entry_id: Model_ComponentsInput!): Model_Components!
-  getOrder(order_id: OrdersInput!): Orders!
-  getProduction(production_id: ProductionsInput!): Productions!
-  getWeaponModel(model_id: Weapon_ModelsInput!): Weapon_Models!
+  getComponent(component_id: String!): Components!
+  getEmployee(employee_id: String!): Employees!
+  getModelComponent(entry_id: String!): Model_Components!
+  getOrder(order_id: String!): Orders!
+  getProduction(production_id: String!): Productions!
+  getWeaponModel(model_id: String!): Weapon_Models!
 }
 
-"""
-Different types of firearms and weapons.
-"""
+"""Different types of firearms and weapons."""
 enum WeaponInputType {
   ASSAULT_RIFLE
   BAZOOKA
@@ -211,9 +182,7 @@ enum WeaponInputType {
   ZIP_GUN
 }
 
-"""
-Different types of firearms and weapons.
-"""
+"""Different types of firearms and weapons."""
 enum WeaponType {
   ASSAULT_RIFLE
   BAZOOKA
@@ -243,9 +212,7 @@ enum WeaponType {
   ZIP_GUN
 }
 
-"""
-The weapon model
-"""
+"""The weapon model"""
 type Weapon_Models {
   manufacturer: String!
   model_description: String!
