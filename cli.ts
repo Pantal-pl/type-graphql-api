@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-constant-condition */
 /* eslint-disable no-console */
 /* eslint-disable no-await-in-loop */
 import { execSync } from 'child_process';
