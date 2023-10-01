@@ -1,1 +1,1 @@
-export { dataSource } from './dataSource';
+export { AppDataSource } from './dataSource';

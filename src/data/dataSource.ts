@@ -1,25 +1,19 @@
+/* eslint-disable no-console */
 import { DataSource } from 'typeorm';
 
-// Create TypeORM dataSource
-export const dataSource = new DataSource({
+export const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
-  poolSize: 5,
-  port: 5432,
+  port: 9999,
+  username: 'root',
+  password: 'root',
   database: 'weapon_database',
-  password: 'admin',
-  username: 'admin',
-  dropSchema: true,
-  logging: 'all',
-  //   entities: [Rating, Recipe, User],
-  logger: 'advanced-console',
 });
-async function main() {
-  try {
-    await dataSource.initialize();
-  } catch (error) {
-    console.error(error);
-  }
-}
 
-main();
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization', err);
+  });
