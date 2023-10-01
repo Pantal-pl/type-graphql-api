@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import 'reflect-metadata';
 import path from 'node:path';
 import { ApolloServer } from '@apollo/server';
@@ -11,7 +12,7 @@ import {
   OrdersResolver,
   ProductionsResolver,
   Weapon_ModelsResolver,
-  dataSource,
+  AppDataSource,
 } from 'index';
 
 async function bootstrap() {
@@ -19,7 +20,7 @@ async function bootstrap() {
 
   const dirname = path.dirname(filename);
 
-  await dataSource.initialize();
+  await AppDataSource.initialize();
 
   const schema = await buildSchema({
     resolvers: [ComponentResolver, EmployeesResolver, OrdersResolver, Model_ComponentsResolver, ProductionsResolver, Weapon_ModelsResolver],
