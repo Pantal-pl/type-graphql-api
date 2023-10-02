@@ -1,5 +1,5 @@
-export { Components } from './Components.type';
-export { ComponentsInput } from './Components.input';
+export { Component } from './Component.type';
+export { ComponentInput } from './Component.input';
 export { Employees } from './Employees.type';
 export { EmployeesInput } from './Employees.input';
 export { Model_Components } from './Model_Components.type';
