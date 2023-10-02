@@ -1,11 +1,11 @@
-import { Resolver, Query, Mutation, Args, Arg } from 'type-graphql';
-import { Model_Components, Model_ComponentsInput } from 'index';
+import { Resolver, Query, Mutation, Arg } from 'type-graphql';
+import { Model_Components, Model_ComponentsInput, getData } from 'index';
 
 @Resolver()
 export class Model_ComponentsResolver {
   @Query(() => Model_Components)
-  async getModelComponent(@Arg('entry_id', () => String) entry_id: string): Promise<Model_Components> {
-    return new Model_Components();
+  async getModelComponent(@Arg('entry_id', () => String) entry_id: string): Promise<Model_Components | null> {
+    return getData(Model_Components, 'entry_id', entry_id);
   }
 
   @Mutation(() => Model_Components)

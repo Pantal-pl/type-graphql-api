@@ -1,18 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-import { AppDataSource, Employees, EmployeesInput } from 'index';
+import { AppDataSource, Employees, EmployeesInput, getData } from 'index';
 import { v4 as uuidv4 } from 'uuid';
 
 @Resolver()
 export class EmployeesResolver {
   @Query(() => Employees, { nullable: true })
-  async getEmployee(@Arg('employee_id', () => String) employee_id: string) {
-    const result = await AppDataSource.createQueryBuilder()
-      .select('employees')
-      .from(Employees, 'employees')
-      .where('employees.employee_id = :employee_id', { employee_id })
-      .getOne();
-    return result;
+  async getEmployee(@Arg('employee_id', () => String) employee_id: string): Promise<Employees | null> {
+    return getData(Employees, 'employee_id', employee_id);
   }
 
   @Mutation((_returns) => Employees)
@@ -20,10 +15,8 @@ export class EmployeesResolver {
     @Arg('input', () => EmployeesInput)
     { employee_contact, employee_first_name, employee_second_name, employment_date, position, salary }: Employees
   ): Promise<Employees> {
-    const UUIDv4 = uuidv4();
-
-    const employeeData = {
-      employee_id: UUIDv4,
+    const employeeData: Employees = {
+      employee_id: uuidv4(),
       employee_first_name,
       employee_second_name,
       position,
@@ -34,7 +27,7 @@ export class EmployeesResolver {
 
     await AppDataSource.createQueryBuilder().insert().into(Employees).values(employeeData).execute();
 
-    return Object.assign(new Employees(), employeeData);
+    return employeeData;
   }
 
   @Mutation(() => Employees)
@@ -47,13 +40,13 @@ export class EmployeesResolver {
 
   @Mutation(() => Boolean)
   async deleteEmployee(@Arg('employee_id', () => String) employee_id: String): Promise<Boolean> {
-    const deleteResult = await AppDataSource.createQueryBuilder()
+    const result = await AppDataSource.createQueryBuilder()
       .delete()
       .from(Employees)
       .where('employee_id = :employee_id', { employee_id })
       .execute();
 
-    if (deleteResult.affected) {
+    if (result.affected) {
       return true;
     }
     return false;
