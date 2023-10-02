@@ -3,18 +3,18 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-"""The components model"""
-type Components {
+"""The component model"""
+type Component {
   component_description: String!
-  component_id: String!
+  component_id: String
   component_name: String!
   in_stock: Int!
   unit_price: Float!
 }
 
-input ComponentsInput {
+input ComponentInput {
   component_description: String
-  component_id: String!
+  component_id: String
   component_name: String!
   in_stock: Int!
   unit_price: Float!
@@ -61,19 +61,19 @@ input Model_ComponentsInput {
 }
 
 type Mutation {
-  addComponent(input: ComponentsInput!): Components!
+  addComponent(input: ComponentInput!): Component!
   addEmployee(input: EmployeesInput!): Employees!
   addModelComponent(input: Model_ComponentsInput!): Model_Components!
   addOrder(input: OrdersInput!): Orders!
   addProduction(input: ProductionsInput!): Productions!
   addWeaponModel(input: Weapon_ModelsInput!): Weapon_Models!
-  deleteComponent(component_id: ComponentsInput!): Boolean!
+  deleteComponent(component_id: String!): Boolean!
   deleteEmployee(employee_id: String!): Boolean!
   deleteModelComponent(entry_id: String!): Boolean!
   deleteOrder(order_id: String!): Boolean!
   deleteProduction(production_id: String!): Boolean!
   deleteWeaponModel(model_id: String!): Boolean!
-  updateComponent(component_id: String!, input: ComponentsInput!): Components!
+  updateComponent(component_id: String!, input: ComponentInput!): Component!
   updateEmployee(employee_id: String!, input: EmployeesInput!): Employees!
   updateModelComponent(entry_id: String!, input: Model_ComponentsInput!): Model_Components!
   updateOrder(input: OrdersInput!, order_id: String!): Orders!
@@ -144,7 +144,7 @@ input ProductionsInput {
 }
 
 type Query {
-  getComponent(component_id: String!): Components!
+  getComponent(component_id: String!): Component
   getEmployee(employee_id: String!): Employees
   getModelComponent(entry_id: String!): Model_Components!
   getOrder(order_id: String!): Orders!
