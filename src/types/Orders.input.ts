@@ -41,7 +41,6 @@ export class OrdersInput implements Partial<Orders> {
   @Column({ type: 'float' })
   @Field((_type) => Float)
   @IsNumber({ maxDecimalPlaces: 2 })
-  @IsCurrency({ allow_decimal: true, symbol: '$' })
   @IsPositive({ always: true })
   total_order_cost!: number;
 }
