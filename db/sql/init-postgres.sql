@@ -1,19 +1,19 @@
 CREATE TABLE
-    WeaponModel (
-        weapon_model_id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
-        model_name VARCHAR(255) NOT NULL,
-        weapon_type VARCHAR(255),
-        manufacturer VARCHAR(255),
-        model_description TEXT
-    );
-
-CREATE TABLE
     Component (
         component_id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
         component_name VARCHAR(255) NOT NULL,
         component_description TEXT,
         unit_price DECIMAL(10, 2), -- Using DECIMAL for precise financial calculations
         in_stock INT
+    );
+
+CREATE TABLE
+    WeaponModel (
+        weapon_model_id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
+        model_name VARCHAR(255) NOT NULL,
+        weapon_type VARCHAR(255),
+        manufacturer VARCHAR(255),
+        model_description TEXT
     );
 
 CREATE TABLE
