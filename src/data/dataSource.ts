@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 /* eslint-disable no-console */
-import { Components, Employees, Model_Components, Orders, Productions, Weapon_Models } from 'index';
+import { Component, Employees, Model_Components, Orders, Productions, Weapon_Models } from 'index';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   port: 9999,
   username: 'root',
   password: 'root',
-  entities: [Employees, Components, Model_Components, Orders, Productions, Weapon_Models],
+  entities: [Employees, Component, Model_Components, Orders, Productions, Weapon_Models],
   database: 'weapon_database',
 });
 

@@ -41,3 +41,4 @@ bootstrap().catch(console.error);
 export * from 'types';
 export * from 'resolvers';
 export * from 'data';
+export * from 'helpers';

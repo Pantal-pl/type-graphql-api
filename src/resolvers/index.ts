@@ -1,4 +1,4 @@
-export { ComponentResolver } from './Components.resolver';
+export { ComponentResolver } from './Component.resolver';
 export { EmployeesResolver } from './Employees.resolver';
 export { Model_ComponentsResolver } from './Model_Components.resolver';
 export { OrdersResolver } from './Orders.resolver';
